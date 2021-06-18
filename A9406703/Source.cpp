@@ -9,7 +9,6 @@ int main() {
     srand(time(NULL));//隨機定義宣告
     OX game;
     int select = 0;//選擇
-    //char table[rowSize][columnSize] = { '\0' };//宣告一個棋盤
     int position = 0, round = 1;//畫的位置,回合
     bool finish = false, comFirst = true;//遊戲是否結束,人機大戰時電腦是否先手
 
@@ -31,13 +30,13 @@ int main() {
         while (!finish) {//遊戲是否結束
             if (comFirst) {//判斷回合
                 position = rand() % 9 + 1;//1`9隨機跑數字
-                if (game.input(position, round)) {//如果可放,input回傳true,把電腦的出手調回後出手
+                if (game.setPosition(position, round)) {//如果可放,input回傳true,把電腦的出手調回後出手
                     comFirst = false;
                 }
             }
             else {//玩家的回合
                 cin >> position;
-                if (game.input(position, round)) {//如果可放,input回傳true,把電腦的出手調回先出手
+                if (game.setPosition(position, round)) {//如果可放,input回傳true,把電腦的出手調回先出手
                     comFirst = true;
                 }
                 else {
@@ -64,7 +63,9 @@ int main() {
         }
         if (!finish)
             cout << "平手" << endl;
+
         break;
+
     case 2://人人
         game.draw();
         cout << "格子對照數字鍵盤(按0退出)" << endl;
@@ -74,7 +75,7 @@ int main() {
                 finish = true;
                 break;
             }
-            if (!game.input(position, round))
+            if (!game.setPosition(position, round))
                 game.wrong();
             system("CLS");
             game.draw();
@@ -92,7 +93,5 @@ int main() {
         break;
     }
 
-
-    system("pause");
     return 0;
 }

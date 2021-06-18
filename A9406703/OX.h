@@ -3,9 +3,10 @@
 
 class OX {
 public:
-	void draw();
+	OX();
+	void draw();//getPosition
 	void wrong();
-	bool input(int position, int& round);
+	bool setPosition(int position, int& round);
 	bool gameover();
 	bool whoFirst();
 private:

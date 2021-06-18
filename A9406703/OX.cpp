@@ -1,7 +1,9 @@
 #include"OX.h"
 #include"iostream"
 using namespace std;
+OX::OX() {
 
+}
 void OX::draw() {//畫棋盤
     cout << "-------------" << endl;
     for (int i = 0; i < 3; i++) {
@@ -17,7 +19,7 @@ void OX::wrong() {//輸出錯誤訊息
     system("pause");
 }
 
-bool OX::input(int position, int& round) {//畫圈畫叉
+bool OX::setPosition(int position, int& round) {//畫圈畫叉
     //回合
     switch (position) {
     case 0://退出
@@ -110,6 +112,7 @@ bool OX::gameover() {
     }
     return false;//沒人贏
 }
+
 bool  OX::whoFirst() {
     int select=3;
     while (select != 0 && select != 1 && select != 2) {
